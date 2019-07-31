@@ -1,0 +1,24 @@
+{
+    "profinetApp": {
+        "userFeedback" : {
+            "home": {
+                "title": "UserFeedbacks",
+                "createLabel": "Create a new UserFeedback",
+                "createOrEditLabel": "Create or edit a UserFeedback"
+            },
+            "created": "A new UserFeedback is created with identifier {{ param }}",
+            "updated": "A UserFeedback is updated with identifier {{ param }}",
+            "deleted": "A UserFeedback is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete UserFeedback {{ id }}?"
+            },
+            "detail": {
+                "title": "UserFeedback"
+            },
+            "comment": "Comment",
+            "rating": "Rating",
+            "date": "Date",
+            "appointmentuserfeedback": "appointmentuserfeedback"
+        }
+    }
+}

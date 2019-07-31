@@ -1,0 +1,27 @@
+{
+    "profinetApp": {
+        "expertField" : {
+            "home": {
+                "title": "ExpertFields",
+                "createLabel": "Create a new ExpertField",
+                "createOrEditLabel": "Create or edit an ExpertField",
+				"offerTitle": "Offers"
+            },
+            "created": "A new ExpertField is created with identifier {{ param }}",
+            "updated": "A ExpertField is updated with identifier {{ param }}",
+            "deleted": "A ExpertField is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ExpertField {{ id }}?"
+            },
+            "detail": {
+                "title": "ExpertField"
+            },
+            "description": "Description",
+            "expert": "Expert",
+            "field": "Field",
+			"language": "Language",
+			"category": "Category",
+			"filterby": "Filter by:"
+        }
+    }
+}

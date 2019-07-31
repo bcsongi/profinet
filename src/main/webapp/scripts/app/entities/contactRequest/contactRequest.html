@@ -1,0 +1,87 @@
+<div>
+
+    <h2 translate="profinetApp.expertContactRequest.home.title">ExpertContactRequests</h2>
+
+    <div class="container">
+        <div class="col-md-6"/>
+        <div class="col-md-6">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                </div>
+                <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a ExpertContactRequest</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="profinetApp.expertContactRequest.userRequest">userRequest</th>
+					<th translate="profinetApp.expertContactRequest.approved">Approved</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="expertContactRequest in contactRequests | orderBy:'approved':true">
+                    <td><!--a ui-sref="expertContactRequest.detail({id:expertContactRequest.id})"-->{{expertContactRequest.id}}<!--/a--></td>
+                    
+                    <td>{{expertContactRequest.userRequest.login}}</td>
+                    <!--td>
+                        <button type="submit"
+                                ui-sref="expertContactRequest.detail({id:expertContactRequest.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="expertContactRequest.edit({id:expertContactRequest.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(expertContactRequest.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td-->
+					<td>
+						<div ng-switch="expertContactRequest.approved">
+							<div class="check_green img-responsive img-rounded" ng-switch-when="true"/>
+							<div class="cross_red img-responsive img-rounded" ng-switch-when="false"/>
+							<div class="exclamation_yellow img-responsive img-rounded" ng-switch-default/>
+						</div>
+					</td>
+					<td>
+					<div>
+						<button type="submit"
+                                ng-click="approve(expertContactRequest)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.approve">Approve</span>
+                        </button>
+						<button type="submit"
+                                ng-click="refuse(expertContactRequest)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.refuse">Refuse</span>
+                        </button>
+					</div>
+					</td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

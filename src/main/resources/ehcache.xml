@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="edu.codespring.profinet.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="edu.codespring.profinet.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="edu.codespring.profinet.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="edu.codespring.profinet.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="edu.codespring.profinet.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    
+    <cache name="edu.codespring.profinet.domain.Expert" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Keyword" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Field" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.UserFeedback" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Message" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Language" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.ExpertContactRequest" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Appointment" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Expert.expertfields" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Expert.expertkeywords" timeToLiveSeconds="60"/>
+    <cache name="edu.codespring.profinet.domain.Expert.expertlanguages" timeToLiveSeconds="60"/>
+    
+</ehcache>

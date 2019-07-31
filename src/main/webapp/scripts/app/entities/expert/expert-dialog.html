@@ -1,0 +1,126 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myExpertLabel" translate="profinetApp.expert.home.createOrEditLabel">Create or edit a Expert</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="expert.id" readonly>
+        </div>
+		
+		<div class="form-group">
+            <label translate="profinetApp.expert.user" for="field_expertuser">User</label>
+            <select class="form-control" id="field_expertuser" name="expertuser" ng-model="expert.expertuser.id" ng-options="user.id as user.login for user in users">
+            </select>
+			
+			<div ng-show="editForm.expertuser.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.expertuser.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="profinetApp.expert.timetable" for="field_timetable">Timetable</label>
+            <input type="text" class="form-control" name="timetable" id="field_timetable"
+                    ng-model="expert.timetable"
+                    required>
+
+            <div ng-show="editForm.timetable.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.timetable.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.expert.phoneNumber" for="field_phoneNumber">PhoneNumber</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="expert.phoneNumber"
+                    required>
+
+            <div ng-show="editForm.phoneNumber.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.phoneNumber.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.expert.lastActive" for="field_lastActive">LastActive</label>
+            <input type="datetime-local" class="form-control" name="lastActive" id="field_lastActive"
+                    ng-model="expert.lastActive" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.expert.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude"
+                    ng-model="expert.latitude"
+                    required>
+
+            <div ng-show="editForm.latitude.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.latitude.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.latitude.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.expert.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" id="field_longitude"
+                    ng-model="expert.longitude"
+                    required>
+
+            <div ng-show="editForm.longitude.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.longitude.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.longitude.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="profinetApp.expert.expertkeyword" for="field_expertkeyword">expertkeyword</label>
+            <select class="form-control" id="field_expertkeyword" multiple name="expertkeyword" ng-model="expert.expertkeywords" ng-options="keyword as keyword.name for keyword in keywords track by keyword.id">
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.expert.expertlanguage" for="field_expertlanguage">expertlanguage</label>
+            <select class="form-control" id="field_expertlanguage" multiple name="expertlanguage" ng-model="expert.expertlanguages" ng-options="language as language.name for language in languages track by language.id">
+            </select>
+        </div>
+		
+		<div class="form-group">
+            <label translate="profinetApp.expert.active" for="field_active">Approved</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="expert.active"
+                    >
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
+
+

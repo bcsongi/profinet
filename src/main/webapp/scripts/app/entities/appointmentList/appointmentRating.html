@@ -1,0 +1,22 @@
+<html>
+	<div class="modal-content">
+		<h2 translate="profinetApp.userFeedback.home.title">UserFeedbacks</h2>
+		<h3 translate="profinetApp.userFeedback.rating">Rating</h3>
+		<div class="modal-header">
+			<span ng-repeat="rating in ratings">{{rating.current}} out of
+				{{rating.max}}
+				<div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+			</span>
+		</div>
+		
+		<h3 translate="profinetApp.userFeedback.comment">Comment</h3>
+		<div class="modal-header">
+			<textarea rows="6" cols="100" ng-model="userFeedback.comment"> </textarea>
+		</div>
+		
+		<div class="modal-header">
+			<button ng-click="saveUserFeedback()">Save</button>
+			<button  ng-click="clear()">Cancel</button>
+		</div>
+	</div>
+</html>

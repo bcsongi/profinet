@@ -1,0 +1,22 @@
+{
+    "profinetApp": {
+        "userFeedback" : {
+            "home": {
+                "title": "UserFeedbacks",
+                "createLabel": "Créer un nouveau UserFeedback",
+                "createOrEditLabel": "Créer ou éditer un UserFeedback"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le UserFeedback {{ id }} ?"
+            },
+            "detail": {
+                "title": "UserFeedback"
+            },
+            "comment": "Comment",
+            "rating": "Rating",
+            "date": "Date",
+            "appointmentuserfeedback": "appointmentuserfeedback"
+        }
+    }
+}
+

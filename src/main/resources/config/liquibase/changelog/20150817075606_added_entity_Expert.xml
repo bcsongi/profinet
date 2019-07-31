@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="real" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Expert.
+    -->
+    <changeSet id="20150817075606" author="jhipster">
+        <createTable tableName="EXPERT">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="timetable" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_active" type="timestamp"/>
+            <column name="latitude" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="longitude" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="country" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="regio" type="varchar(255)"/>
+            <column name="locality" type="varchar(255)"/>
+            <column name="route" type="varchar(255)"/>
+            <column name="street_number" type="bigint"/>
+            
+            <column name="user_id" type="bigint">
+            	<constraints nullable="false" foreignKeyName="fk_user_expert" references="jhi_user(id)"/>
+        	</column>
+        	<column name="active" type="bit"/>
+        </createTable>
+        <dropDefaultValue tableName="EXPERT" columnName="last_active" columnDataType="datetime"/>
+
+        
+        
+        
+        <!--  <createTable tableName="EXPERT_EXPERTFIELD">
+            <column name="expertfields_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="experts_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="experts_id, expertfields_id" tableName="EXPERT_EXPERTFIELD"/>
+
+        <addForeignKeyConstraint baseColumnNames="experts_id"
+                                 baseTableName="EXPERT_EXPERTFIELD"
+                                 constraintName="fk_expert_expertfield_field_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="EXPERT"/>
+
+        <addForeignKeyConstraint baseColumnNames="expertfields_id"
+                                 baseTableName="EXPERT_EXPERTFIELD"
+                                 constraintName="fk_field_expertfield_expert_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="FIELD"/>
+         -->
+        <createTable tableName="EXPERT_EXPERTKEYWORD">
+            <column name="expertkeywords_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="experts_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="experts_id, expertkeywords_id" tableName="EXPERT_EXPERTKEYWORD"/>
+
+        <addForeignKeyConstraint baseColumnNames="experts_id"
+                                 baseTableName="EXPERT_EXPERTKEYWORD"
+                                 constraintName="fk_expert_expertkeyword_keyword_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="EXPERT"/>
+
+        <addForeignKeyConstraint baseColumnNames="expertkeywords_id"
+                                 baseTableName="EXPERT_EXPERTKEYWORD"
+                                 constraintName="fk_keyword_expertkeyword_expert_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="KEYWORD"/>
+        
+        <createTable tableName="EXPERT_EXPERTLANGUAGE">
+            <column name="expertlanguages_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="experts_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="experts_id, expertlanguages_id" tableName="EXPERT_EXPERTLANGUAGE"/>
+
+        <addForeignKeyConstraint baseColumnNames="experts_id"
+                                 baseTableName="EXPERT_EXPERTLANGUAGE"
+                                 constraintName="fk_expert_expertlanguage_language_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="EXPERT"/>
+
+        <addForeignKeyConstraint baseColumnNames="expertlanguages_id"
+                                 baseTableName="EXPERT_EXPERTLANGUAGE"
+                                 constraintName="fk_language_expertlanguage_expert_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="LANGUAGE"/>
+        
+    </changeSet>
+</databaseChangeLog>

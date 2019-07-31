@@ -1,0 +1,35 @@
+.plus {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/blue_plus.png") no-repeat center top;
+    background-size: contain;
+	margin-right: 5px;
+    margin-left: 5px;
+}
+
+.exclamation {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/yellow_inprogress.png") no-repeat center top;
+    background-size: contain;
+	margin-right: 5px;
+    margin-left: 5px;
+}
+
+.check {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/green_check.png") no-repeat right top;
+    background-size: contain;
+}
+
+.cross {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/red_cross.png") no-repeat right top;
+    background-size: contain;
+}

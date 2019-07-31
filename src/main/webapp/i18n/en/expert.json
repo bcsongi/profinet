@@ -1,0 +1,37 @@
+{
+    "profinetApp": {
+        "expert" : {
+            "home": {
+                "title": "Experts",
+                "createLabel": "Create a new Expert",
+                "createOrEditLabel": "Create or edit a Expert"
+            },
+            "created": "A new Expert is created with identifier {{ param }}",
+            "updated": "A Expert is updated with identifier {{ param }}",
+            "deleted": "A Expert is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Expert {{ id }}?"
+            },
+            "detail": {
+                "title": "Expert"
+            },
+            "timetable": "Timetable",
+            "phoneNumber": "PhoneNumber",
+            "lastActive": "LastActive",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "expertfield": "Fields:",
+            "expertkeyword": "Expertkeyword",
+            "expertlanguage": "Expertlanguage",
+            "expertuser": "Expertuser",
+			"login": "Username",
+			"firstName":"First Name",
+			"lastName":"Last Name",
+			"user":"Username",
+			"active": "Active",
+			"expertfielddescription": "Description",
+			"expertfieldnew": "New Field:",
+			"placesearch-input": "Address"
+        }
+    }
+}

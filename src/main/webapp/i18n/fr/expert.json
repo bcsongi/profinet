@@ -1,0 +1,27 @@
+{
+    "profinetApp": {
+        "expert" : {
+            "home": {
+                "title": "Experts",
+                "createLabel": "Créer un nouveau Expert",
+                "createOrEditLabel": "Créer ou éditer un Expert"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Expert {{ id }} ?"
+            },
+            "detail": {
+                "title": "Expert"
+            },
+            "timetable": "Timetable",
+            "phoneNumber": "PhoneNumber",
+            "lastActive": "LastActive",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
+            "expertfield": "expertfield",
+            "expertkeyword": "expertkeyword",
+            "expertlanguage": "expertlanguage",
+            "expertuser": "expertuser"
+        }
+    }
+}
+

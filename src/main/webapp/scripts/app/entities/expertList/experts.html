@@ -1,0 +1,153 @@
+<style>
+
+</style>
+
+<div class="transparentcontainer">
+	<div class="filtercontainer">
+		<div class="innerfiltercontainer">
+				<div class="form-group">
+					<div class="col-md-12">
+						<form name="searchForm" class="form-inline">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="searchQuery" style="width: 100%" id="greyBoxShadow" placeholder="Search...">
+							</div>
+							<div id="offerSearchButtonPadding">
+								<button class="btn expertfields-btn-info col-md-12" ng-click="search()"> <span class="glyphicon glyphicon-search"></span> <span>Search</span>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+					<div id="filterTitle" translate="profinetApp.expertField.filterby">Filter by:</div>	
+					
+					<form name="filterForm" class="form-inline">
+
+						<div class="form-group">
+							<div class="col-md-12">
+								<div class="form-group">
+									<div class="categoryTitle" translate="profinetApp.expertField.category" for="field_category">category</div>
+									<select class="form-control" id="greyBoxShadow" ng-change="filterByField()" ng-model="fieldfilter" ng-options="field as field.name for field in fields track by field.id">
+									</select>
+								</div>
+							</div>
+						</div>	
+						
+						<div class="form-group">
+							<div class="col-md-12">
+								
+								<div class="form-group">
+									<div class="categoryTitle" translate="profinetApp.expertField.language" for="field_language">language</div>
+									<select class="form-control" id="greyBoxShadow" ng-change="filterByLanguage()" ng-model="languagefilter" ng-options="language as language.name for language in languages track by language.id">
+									</select>
+								</div>
+								
+							</div> 
+			
+						</div>
+						
+						<a href="javascript:history.go(0)"><h6>[Clear filter]</h6></a>
+						
+						<div class="form-group">
+							<div class="col-md-12">
+								<button	class="btn expertfields-btn-info col-md-12" ng-click="filter()"><span class="glyphicon glyphicon-search"></span> <span>Filter</span>
+								</button><br/>
+							</div>
+						</div>
+					</form>
+			</form>	
+		</div>
+	</div>
+
+	<div class="homecontent">
+		<div>
+			<div class="table-responsive">
+				<div id="map" style="width=100%;height:400px;"></div>	
+				<div class="innerhomecontent">
+					<h2 class="title"translate="profinetApp.expertField.home.offerTitle">Offers</h2>
+					<div class="horizontalline"></div>
+					<div class="col-md-12" ng-repeat="offer in expertfields">
+						<div ng-if="isAuthenticated()" ng-init="isApproved(offer, user)"></div>
+						
+						<div class="panel panel-default">
+							<div class="panel-heading col-md-12" id="offer.id">
+									<div class="col-lg-9"><span id="panel-heading-title">Username: <span id="panel-heading-content">{{offer.expert.expertuser.login}}</span> <br />  Real name: <span id="panel-heading-content">{{offer.expert.expertuser.firstName}} {{offer.expert.expertuser.lastName}}</span></span></div>
+									<span floate="rigth"><span id="panel-heading-title">Category: <span id="panel-heading-content">{{offer.field.name}}</span></span> </span>
+							</div>
+						
+							<div class="panel-body" id="EF{{offer.id}} ">
+								<div>Description: {{offer.description}}</div>	
+								<div>Timetable: {{offer.expert.timetable}}</div>
+								<div>Languages: <span ng-repeat="language in offer.expert.expertlanguages"> {{ language.name }} </span> </div>
+								<div>Keywords: <span ng-repeat="keyword in offer.expert.expertkeywords"> {{ keyword.name }} </span></div>
+							</div>
+					
+							<div class="panel-body panel-footer" ng-switch="isAuthenticated()">
+								
+								<div class="col-md-12">
+									<div class="float_right"><span>Last active: {{offer.expert.lastActive | date}}</span></div>
+									<span> Rating: <span star-rating2 rating-Value="offer.rating" max="10"></span></span>
+									<div class="review" not-admin><a ng-click="loadRatings(offer.id, expertfields.indexOf(offer)); comments[offer.id]=true; loadmore[offer.id]=true">[See reviews...]</a></div>
+								</div>
+								<div class="contactButtons">
+									<div ng-switch-when="true" not-admin>
+										<div class="col-md-3" ng-switch="existsRequest[offer.id]">
+											Contact Info:
+											<div ng-switch-when="true">
+												<div ng-switch="approved[offer.id]">
+													<!--div class="check_green img-responsive img-rounded" ng-switch-when="true"/-->
+													<button ui-sref="expertFields.detail({id:offer.expert.id})"
+															class="btn btn-info btn-small"
+															ng-switch-when="true">
+														<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+													</button>
+													<div class="cross_red img-responsive img-rounded" ng-switch-when="false"/>
+													<div class="exclamation_yellow img-responsive img-rounded" ng-switch-default/>
+												</div>
+											</div>
+											<div ng-switch-default> <button class="btn btn-info" ng-click="sendRequest(offer)"><span>Request</span></button></div>
+										</div>
+										<div class="col-md-3" ng-if="existsRequest[offer.id] === true && approved[offer.id]===true" class="col-md-3">Appointment: <button class="btn btn-info" ui-sref="appointmentList.new({expertFieldId: offer.id})"><span>Request</span></button></div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body" ng-if="comments[offer.id] && isAuthenticated()" not-admin>
+								<div class="hideReviewTitle">Reviews</div>
+								<div ng-repeat="rating in ratings[offer.id]">
+									<div class="col-md-12"><b>{{rating.appointmentuserfeedback.userappointment.login}}</b></div>
+									<div class="col-md-4">
+										<div star-rating2 rating-Value="rating.rating" max="10"></div>
+									</div>
+									<div class="col-md-12"><h4>{{rating.comment}}</h4></div>
+								</div>
+							</div>
+							<div class="col-md-12 panel panel-footer" align="right" ng-if="comments[offer.id] && isAuthenticated()">
+								<div class="col-md-6" align="left">
+									<a class="hideReview" ng-click="hideRatings(offer.id, expertfields.indexOf(offer)); comments[offer.id]=false;">[Hide reviews]</a>
+								</div>
+								<div class="col-md-6">
+									<a ng-click="loadRatings(offer.id)" ng-if="loadmore[offer.id]">Load more &gt;&gt;</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					<nav>
+						<ul class="pagination">
+							<li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+							<li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+							<li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+							<li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+							<li class="active"><a>{{page}}</a></li>
+							<li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+							<li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+							<li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+							<li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

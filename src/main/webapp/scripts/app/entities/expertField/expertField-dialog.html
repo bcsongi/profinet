@@ -1,0 +1,44 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myExpertFieldLabel" translate="profinetApp.expertField.home.createOrEditLabel">Create or edit a ExpertField</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="expertField.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label translate="profinetApp.expertField.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="expertField.description"
+                    >
+
+        </div>
+		
+        <div class="form-group">
+            <label translate="profinetApp.expertField.expert" for="field_expert">expert</label>
+            <select class="form-control" id="field_expert" name="expert" ng-model="expertField.expert.id" ng-options="expert.id as expert.expertuser.login for expert in experts">
+            </select>
+        </div>
+		
+        <div class="form-group">
+            <label translate="profinetApp.expertField.field" for="field_field">field</label>
+            <select class="form-control" id="field_field" name="field" ng-model="expertField.field.id" ng-options="field.id as field.name for field in fields">
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

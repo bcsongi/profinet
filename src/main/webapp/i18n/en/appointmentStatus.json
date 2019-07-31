@@ -1,0 +1,11 @@
+{
+    "profinetApp": {
+        "AppointmentStatus" : {
+            "SELECT": "{VALUE, select, CREATED{CREATED} ACCEPTED{ACCEPTED} DENIED{DENIED} FINISHED{FINISHED} other{}}",
+            "CREATED": "CREATED",
+            "ACCEPTED": "ACCEPTED",
+			"DENIED": "DENIED",
+            "FINISHED": "FINISHED"
+        }
+    }
+}

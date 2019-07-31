@@ -1,0 +1,19 @@
+{
+    "profinetApp": {
+        "field" : {
+            "home": {
+                "title": "Fields",
+                "createLabel": "Créer un nouveau Field",
+                "createOrEditLabel": "Créer ou éditer un Field"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Field {{ id }} ?"
+            },
+            "detail": {
+                "title": "Field"
+            },
+            "name": "Name"
+        }
+    }
+}
+

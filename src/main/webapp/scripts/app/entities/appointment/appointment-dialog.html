@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myAppointmentLabel" translate="profinetApp.appointment.home.createOrEditLabel">Create or edit a Appointment</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="appointment.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label translate="profinetApp.appointment.startingDate" for="field_startingDate">StartingDate</label>
+            <input type="datetime-local" class="form-control" name="startingDate" id="field_startingDate"
+                    ng-model="appointment.startingDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.appointment.endingDate" for="field_endingDate">EndingDate</label>
+            <input type="datetime-local" class="form-control" name="endingDate" id="field_endingDate"
+                    ng-model="appointment.endingDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.appointment.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="appointment.description"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.appointment.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="appointment.status" id="field_status" required>
+               <option value="CREATED" translate="profinetApp.AppointmentStatus.CREATED">CREATED</option>
+               <option value="ACCEPTED" translate="profinetApp.AppointmentStatus.ACCEPTED">ACCEPTED</option>
+               <option value="FINISHED" translate="profinetApp.AppointmentStatus.FINISHED">FINISHED</option>
+            </select>
+
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="profinetApp.appointment.field" for="field_expertfield">expertfield</label>
+            <select class="form-control" id="field_expertappointment" name="expertappointment" ng-model="appointment.expertField" ng-options="expertfield as expertfield.field.name for expertfield in expertfields">
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="profinetApp.appointment.userappointment" for="field_userappointment">userappointment</label>
+            <select class="form-control" id="field_userappointment" name="userappointment" ng-model="appointment.userappointment" ng-options="user as user.login for user in users">
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

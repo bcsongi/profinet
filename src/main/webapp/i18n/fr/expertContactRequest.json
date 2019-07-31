@@ -1,0 +1,21 @@
+{
+    "profinetApp": {
+        "expertContactRequest" : {
+            "home": {
+                "title": "ExpertContactRequests",
+                "createLabel": "Créer un nouveau ExpertContactRequest",
+                "createOrEditLabel": "Créer ou éditer un ExpertContactRequest"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le ExpertContactRequest {{ id }} ?"
+            },
+            "detail": {
+                "title": "ExpertContactRequest"
+            },
+            "approved": "Approved",
+            "userRequest": "userRequest",
+            "expertrequest": "expertrequest"
+        }
+    }
+}
+

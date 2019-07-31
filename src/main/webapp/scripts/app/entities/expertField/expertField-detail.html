@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="profinetApp.expertField.detail.title">ExpertField</span> {{expertField.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertField.description">Description</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertField.description}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertField.expert">expert</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertField.expert.expertuser.login}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertField.field">field</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertField.field.name}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="expertField"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="profinetApp.appointment.detail.title">Appointment</span> {{appointment.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.startingDate">StartingDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.startingDate}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.endingDate">EndingDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.endingDate}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.description">Description</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.description}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.status">Status</span>
+                </td>
+                <td>
+                    <span class="input-sm form-control readonly" translate="profinetApp.AppointmentStatus.SELECT"
+                          translate-interpolation="messageformat" translate-values="{ VALUE: appointment.status }"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.expertappointment">expertappointment</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.expertField.expert.expertuser.login}}" readonly>
+                </td>
+            </tr>
+		    <tr>
+                <td>
+                    <span translate="profinetApp.appointment.field">expertappointment</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.expertField.field.name}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.appointment.userappointment">userappointment</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{appointment.userappointment.login}}" readonly>
+                </td>
+            </tr>
+                <td>
+                    <span translate="profinetApp.appointment.rating">rating</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" ng-model="userFeedback.rating" readonly>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                    <span translate="profinetApp.userFeedback.comment">comment</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" ng-model="userFeedback.comment" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="appointmentList"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

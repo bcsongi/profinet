@@ -1,0 +1,22 @@
+{
+    "profinetApp": {
+        "message" : {
+            "home": {
+                "title": "Messages",
+                "createLabel": "Créer un nouveau Message",
+                "createOrEditLabel": "Créer ou éditer un Message"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Message {{ id }} ?"
+            },
+            "detail": {
+                "title": "Message"
+            },
+            "text": "Text",
+            "date": "Date",
+            "userfrom": "userfrom",
+            "userto": "userto"
+        }
+    }
+}
+

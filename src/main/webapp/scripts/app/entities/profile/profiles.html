@@ -1,0 +1,188 @@
+<form name="editForm" role="form" novalidate show-validation>
+	<span class="floatedRightElement">
+            <span translate="profinetApp.expert.active" for="field_active">Active</span>
+            <input type="checkbox" class="checkboxSize" name="active" id="field_active" ng-model="exp.active"/>
+	</span>
+    <div class="modal-header">
+        <div class="modal-title" id="myExpertLabel" translate="profinetApp.expert.home.createOrEditLabel">Create/Edit Your Expert Profile</div>
+    </div>
+    <div class="modal-body">
+		<div class="form-group">
+			<div class="form-group">
+				<label for="login" translate="profinetApp.expert.user">Username</label>
+				<input type="text" class="form-control" id="expertuser" name="expertuser" ng-model="exp.expertuser.login" readonly>
+			</div>	
+        </div>
+		
+        <div class="form-group">
+            <label translate="profinetApp.expert.timetable" for="field_timetable">Timetable</label>
+            <input type="text" class="form-control" name="timetable" value="" id="field_timetable"
+                    ng-model="exp.timetable"
+                    required>
+					
+            <div ng-show="editForm.timetable.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.timetable.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+		
+		<div class="form-group">
+					
+            <label translate="profinetApp.expert.phoneNumber" for="field_phoneNumber">PhoneNumber</label>
+            <input type="text" class="form-control" name="phone_Number" value="" id="field_phoneNumber"
+                    ng-model="exp.phoneNumber" 
+                    required>
+
+            <div ng-show="editForm.phoneNumber.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.phoneNumber.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+		</div>
+        
+	<!--	<div class="form-group">
+            <label translate="profinetApp.expert.lastActive" for="field_lastActive">LastActive</label>
+            <input type="datetime-local" class="form-control" name="lastActive" value="exp.lastactive" id="field_lastActive"
+                    ng-model="exp.lastActive" ng-model-options="{timezone: 'UTC'}"
+                    >
+
+        </div>
+	-->	
+        <div class="form-group">
+            <label translate="profinetApp.expert.latitude" for="field_latitude">Latitude</label>
+            <input type="number" class="form-control" name="latitude" id="field_latitude" value="exp.latitiude"
+                    ng-model="exp.latitude"
+                    required readonly>
+
+            <div ng-show="editForm.latitude.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.latitude.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.latitude.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label translate="profinetApp.expert.longitude" for="field_longitude">Longitude</label>
+            <input type="number" class="form-control" name="longitude" value="exp.longitude" id="field_longitude"
+                    ng-model="exp.longitude"
+                    required readonly>
+
+            <div ng-show="editForm.longitude.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.longitude.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+	
+		<div class="form-group" id="addNewField">
+			<label translate="profinetApp.expert.expertfield" for="field_expertfield">ExpertField</label>
+            																																				
+			<fieldset  data-ng-repeat="expertfield in myexpertfields">
+				
+				<div class="col-md-12" ng-if="myexpertfields[myexpertfields.length - 1] != expertfield" readonly>
+					<div class="panel panel-default" >
+						<div class="panel-heading col-md-12">
+							<label class="col-md-6" translate="profinetApp.expert.expertfield" for="field_expertfield">Field</label>
+						
+							<input class="col-md-4" type="text" class="form-control" ng-model="expertfield.field.name" readonly />
+						
+						<div class="panel-body">
+							<label class="col-md-12" translate="profinetApp.expert.expertfielddescription" for="field_expertfielddescription">Description</label>
+							<div class="col-md-12">
+								<textarea rows="5" cols="100" type="text" ng-model="expertfield.description" placeholder="Enter the new field" readonly> </textarea>
+							</div>
+						</div>
+							
+					</div>
+				</div>
+			
+			</fieldset>	
+			
+					<label translate="profinetApp.expert.expertfieldnew" for="field_expertfield">Fieldnames</label>
+					<div class=" col-md-12">
+						<div class="panel panel-default">
+						
+							<div class="panel-heading col-md-12">
+								<label class="col-md-6" translate="profinetApp.expert.expertfield" for="field_fieldname">Fieldnames</label>
+								<select class="col-md-4" id="addFieldRadius" ng-model="mynewfield" type="text" id="newfield" name="newfield" ng-options="field as field.name for field in fields track by field.id"></select>
+								<div class="col-md-2" align="right">
+									<button class="remove" ng-click="addExpertField()">+</button>
+								</div>
+							</div>
+							<div class="panel-body">
+								<label class="col-md-12" translate="profinetApp.expert.expertfielddescription" for="field_expertfielddescription">Description</label>
+								<textarea rows="5" cols="100" class="col-md-12" type="text" ng-model="mynewdescription" id="newexpertfield" name="newexpertfield" placeholder="Enter the new field description!"> </textarea>
+							 </div>
+							 <!--div class="panel-footer" align="right">
+								<button class="remove" ng-click="removeExpertField($index)">-</button>
+								<button class="remove" ng-click="addExpertField()">+</button>
+							</div-->
+						</div>
+					</div>
+			<!--label translate="profinetApp.expert.expertfield" for="field_fieldname">Fieldnames</label>
+
+			<select ng-model="mynewfield" type="text" id="newfield" name="newfield" ng-options="field as field.name for field in fields track by field.id"	>
+			</select-->
+			
+		</div>
+
+		
+        <div class="form-group">
+			<label translate="profinetApp.expert.expertlanguage" for="field_expertlanguage">expertlanguage</label>
+				<div ng-repeat="language in languages">
+					<input type="checkbox" name="selectedLanguages[]" value="{{language.name}}" ng-checked="arrayObjectIndexOf(exp.expertlanguages, language.name) > -1" ng-click="toggleSelection(language)"> {{language.name}}
+				</div>
+				
+        </div>
+		
+		<div class="form-group">
+            <label translate="profinetApp.expert.expertkeyword" for="field_expertkeyword">expertkeyword</label>
+		
+			<div class="tags-wrapper">
+				<div id="tagsList" class="tags-cloud">
+					<div ng-repeat="selectedTag in selectedKeywords" class="tag">
+						<span class="tagName">{{selectedTag.name}}</span>
+						<span>&nbsp;<b ng-click="removeTag($index)" class="fa fa-times cross"></b></span>
+					</div>
+					<input type="text" placeholder="Start typing" id="searchInput" ng-keydown="checkKeyDown($event)" class="form-control" ng-model="searchText" ng-change="search()"/>
+				</div>
+				<ul id="suggestions" class="suggestions-list">
+				   <li ng-repeat="suggestion in suggestions" class="blockSpan" ng-click="addToSelectedTags($index)" ng-mouseover="$parent.selectedIndex=$index" ng-class="{active : selectedIndex===$index}">{{suggestion.name}}</li>
+				 </ul>
+			</div>  
+		</div>
+		
+		<div class="form-group">
+            <label translate="profinetApp.expert.placesearch-input" for="placesearch-input">Address</label>
+            <input type="text" class="form-control" name="placesearch-input" id="placesearch-input">
+
+            <div ng-show="editForm.longitude.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.longitude.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+		
+        <div id="googleMap" style="width:100%;height:400px;"></div>
+		
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="editForm.$invalid" ng-click="save()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
+
+		
+			
+

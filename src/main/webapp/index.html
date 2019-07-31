@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ProfiNet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css assets/styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css assets/styles/main.css -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+		<link rel="stylesheet" href="assets/styles/experts.css">
+		<link rel="stylesheet" href="assets/styles/font-awesome.css">
+		<link rel="stylesheet" href="assets/styles/autocomplete.css">
+		<link rel="stylesheet" href="assets/styles/rating.css">
+		<link rel="stylesheet" href="assets/styles/expertfields.css">
+		<link rel="stylesheet" href="assets/styles/expertprofile.css">
+      
+		<!--link rel="stylesheet" href="assets/styles/expertprofile.css"-->
+        
+		<!-- endbuild -->
+    </head>
+    <body ng-app="profinetApp">
+        <!--[if lt IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]	-->
+        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
+        <div ui-view="navbar" ng-cloak=""></div>
+		<hr class="horizontalline">
+        <div class="container">
+            <jh-alert-toast></jh-alert-toast>
+            <div class="well" ui-view="content"></div>
+
+            <!--	<div class="footer">
+                <p translate="footer">This is your footer</p>
+            </div>	-->
+        </div>
+		
+		<div class="homecontainer">
+            <jh-alert-toast></jh-alert-toast>
+            <div class="well" ui-view="homecontent"></div>
+
+            <!--	<div class="footer">
+                <p translate="footer">This is your footer</p>
+            </div>	-->
+        </div>
+		
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGAG1D9YSOGeEnG-GltTSFj-VLreYWm30&sensor=false&libraries=places"></script>
+		
+		<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>-->
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.js"></script>
+        <script src="bower_components/messageformat/messageformat.js"></script>
+        <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+        <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+        <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+		
+		<script src="bower_components/hammer.js-2.0.4/hammer.js"></script>
+
+        <!-- endbower -->
+        <!-- endbuild -->
+
+
+    <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/app.constants.js"></script>
+    <script src="scripts/components/auth/auth.service.js"></script>
+    <script src="scripts/components/auth/principal.service.js"></script>
+    <script src="scripts/components/auth/authority.directive.js"></script>
+    <script src="scripts/components/auth/services/account.service.js"></script>
+    <script src="scripts/components/auth/services/activate.service.js"></script>
+    <script src="scripts/components/auth/services/password.service.js"></script>
+    <script src="scripts/components/auth/services/register.service.js"></script>
+    <script src="scripts/components/form/form.directive.js"></script>
+    <script src="scripts/components/form/maxbytes.directive.js"></script>
+    <script src="scripts/components/form/minbytes.directive.js"></script>
+    <script src="scripts/components/form/pager.directive.js"></script>
+    <script src="scripts/components/form/pagination.directive.js"></script>
+    <script src="scripts/components/admin/audits.service.js"></script>
+    <script src="scripts/components/admin/logs.service.js"></script>
+    <script src="scripts/components/admin/configuration.service.js"></script>
+    <script src="scripts/components/admin/monitoring.service.js"></script>
+    <script src="scripts/components/interceptor/auth.interceptor.js"></script>
+    <script src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
+    <script src="scripts/components/interceptor/notification.interceptor.js"></script>
+    <script src="scripts/components/navbar/navbar.directive.js"></script>
+    <script src="scripts/components/navbar/navbar.controller.js"></script>
+    <script src="scripts/components/user/user.service.js"></script>
+    <script src="scripts/components/util/truncate.filter.js"></script>
+    <script src="scripts/components/util/base64.service.js"></script>
+    <script src="scripts/components/alert/alert.service.js"></script>
+    <script src="scripts/components/alert/alert.directive.js"></script>
+    <script src="scripts/components/util/parse-links.service.js"></script>
+    <script src="scripts/components/util/dateutil.service.js"></script>
+    <script src="scripts/app/account/account.js"></script>
+    <script src="scripts/app/account/activate/activate.js"></script>
+    <script src="scripts/app/account/activate/activate.controller.js"></script>
+    <script src="scripts/app/account/login/login.js"></script>
+    <script src="scripts/app/account/login/login.controller.js"></script>
+    <script src="scripts/app/account/logout/logout.js"></script>
+    <script src="scripts/app/account/logout/logout.controller.js"></script>
+    <script src="scripts/app/account/password/password.js"></script>
+    <script src="scripts/app/account/password/password.controller.js"></script>
+    <script src="scripts/app/account/password/password.directive.js"></script>
+    <script src="scripts/app/account/register/register.js"></script>
+    <script src="scripts/app/account/register/register.controller.js"></script>
+    <script src="scripts/app/account/settings/settings.js"></script>
+    <script src="scripts/app/account/settings/settings.controller.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.js"></script>
+    <script src="scripts/app/admin/admin.js"></script>
+    <script src="scripts/app/admin/audits/audits.js"></script>
+    <script src="scripts/app/admin/audits/audits.controller.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.controller.js"></script>
+    <script src="scripts/app/admin/docs/docs.js"></script>
+    <script src="scripts/app/admin/health/health.js"></script>
+    <script src="scripts/app/admin/health/health.controller.js"></script>
+    <script src="scripts/app/admin/health/health.modal.controller.js"></script>
+    <script src="scripts/app/admin/logs/logs.js"></script>
+    <script src="scripts/app/admin/logs/logs.controller.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+    <script src="scripts/app/entities/entity.js"></script>
+    <script src="scripts/app/error/error.js"></script>
+    <script src="scripts/app/main/main.js"></script>
+    <script src="scripts/app/main/main.controller.js"></script>
+    <script src="bower_components/messageformat/locale/en.js"></script>
+    <script src="bower_components/messageformat/locale/fr.js"></script>
+    <script src="scripts/components/language/language.service.js"></script>
+    <script src="scripts/components/language/language.controller.js"></script>
+    <script src="scripts/components/auth/provider/auth.xauth.service.js"></script>
+    <script src="scripts/app/entities/field/field.js"></script>
+    <script src="scripts/app/entities/field/field.controller.js"></script>
+    <script src="scripts/app/entities/field/field-dialog.controller.js"></script>
+    <script src="scripts/app/entities/field/field-detail.controller.js"></script>
+    <script src="scripts/components/entities/field/field.service.js"></script>
+    <script src="scripts/components/entities/field/field.search.service.js"></script>
+
+	
+    <script src="scripts/app/entities/keyword/keyword.js"></script>
+    <script src="scripts/app/entities/keyword/keyword.controller.js"></script>
+    <script src="scripts/app/entities/keyword/keyword-dialog.controller.js"></script>
+    <script src="scripts/app/entities/keyword/keyword-detail.controller.js"></script>
+    <script src="scripts/components/entities/keyword/keyword.service.js"></script>
+    <script src="scripts/components/entities/keyword/keyword.search.service.js"></script>
+    <script src="scripts/app/entities/language/language.js"></script>
+    <script src="scripts/app/entities/language/language.controller.js"></script>
+    <script src="scripts/app/entities/language/language-dialog.controller.js"></script>
+    <script src="scripts/app/entities/language/language-detail.controller.js"></script>
+    <script src="scripts/components/entities/language/language.service.js"></script>
+    <script src="scripts/components/entities/language/language.search.service.js"></script>
+    <script src="scripts/app/entities/expert/expert.js"></script>
+    <script src="scripts/app/entities/expert/expert.controller.js"></script>
+    <script src="scripts/app/entities/expert/expert-dialog.controller.js"></script>
+    <script src="scripts/app/entities/expert/expert-detail.controller.js"></script>
+    <script src="scripts/components/entities/expert/expert.service.js"></script>
+    <script src="scripts/components/entities/expert/expert.search.service.js"></script>
+    <script src="scripts/app/entities/message/message.js"></script>
+    <script src="scripts/app/entities/message/message.controller.js"></script>
+    <script src="scripts/app/entities/message/message-dialog.controller.js"></script>
+    <script src="scripts/app/entities/message/message-detail.controller.js"></script>
+    <script src="scripts/components/entities/message/message.service.js"></script>
+    <script src="scripts/components/entities/message/message.search.service.js"></script>
+    <script src="scripts/app/entities/appointment/appointment.js"></script>
+    <script src="scripts/app/entities/appointment/appointment.controller.js"></script>
+    <script src="scripts/app/entities/appointment/appointment-dialog.controller.js"></script>
+    <script src="scripts/app/entities/appointment/appointment-detail.controller.js"></script>
+    <script src="scripts/components/entities/appointment/appointment.service.js"></script>
+    <script src="scripts/components/entities/appointment/appointment.search.service.js"></script>
+    <script src="scripts/app/entities/userFeedback/userFeedback.js"></script>
+    <script src="scripts/app/entities/userFeedback/userFeedback.controller.js"></script>
+    <script src="scripts/app/entities/userFeedback/userFeedback-dialog.controller.js"></script>
+    <script src="scripts/app/entities/userFeedback/userFeedback-detail.controller.js"></script>
+    <script src="scripts/components/entities/userFeedback/userFeedback.service.js"></script>
+    <script src="scripts/components/entities/userFeedback/userFeedback.search.service.js"></script>
+    <script src="scripts/app/entities/expertContactRequest/expertContactRequest.js"></script>
+    <script src="scripts/app/entities/expertContactRequest/expertContactRequest.controller.js"></script>
+    <script src="scripts/app/entities/expertContactRequest/expertContactRequest-dialog.controller.js"></script>
+    <script src="scripts/app/entities/expertContactRequest/expertContactRequest-detail.controller.js"></script>
+    <script src="scripts/components/entities/expertContactRequest/expertContactRequest.service.js"></script>
+    <script src="scripts/components/entities/expertContactRequest/expertContactRequest.search.service.js"></script>
+    <!-- endbuild -->
+	<script src="scripts/app/entities/expertList/expert.js"></script>
+    <script src="scripts/app/entities/expertList/expert.controller.js"></script>
+    <script src="scripts/app/entities/expertList/expert-detail.controller.js"></script>
+	<script src="scripts/components/entities/expertList/expert.service.js"></script>
+    <script src="scripts/components/entities/expertList/expert.search.service.js"></script>
+	
+	
+    <script src="scripts/components/entities/expertField/expertField.service.js"></script>
+    <script src="scripts/components/entities/expertField/expertField.search.service.js"></script>
+    <script src="scripts/app/entities/expertField/expertField.js"></script>
+    <script src="scripts/app/entities/expertField/expertField.controller.js"></script>
+    <script src="scripts/app/entities/expertField/expertField-dialog.controller.js"></script>
+    <script src="scripts/app/entities/expertField/expertField-detail.controller.js"></script>
+	
+	
+	<script src="scripts/app/entities/profile/profile.js"></script>		
+    <script src="scripts/app/entities/profile/profile.controller.js"></script>
+    <script src="scripts/app/entities/profile/profile-dialog.controller.js"></script>
+    <script src="scripts/app/entities/profile/profile-detail.controller.js"></script>
+	
+	
+    <script src="scripts/app/entities/contactRequest/contactRequest.js"></script>
+    <script src="scripts/app/entities/contactRequest/contactRequest.controller.js"></script>
+    <script src="scripts/app/entities/contactRequest/contactRequest-dialog.controller.js"></script>
+    <script src="scripts/app/entities/contactRequest/contactRequest-detail.controller.js"></script>
+	
+	
+	<script src="scripts/app/entities/appointmentList/appointmentList-new.controller.js"></script>
+	<script src="scripts/app/entities/appointmentList/appointmentList.js"></script>
+    <script src="scripts/app/entities/appointmentList/appointmentList.controller.js"></script>
+    <script src="scripts/app/entities/appointmentList/appointmentList-dialog.controller.js"></script>
+    <script src="scripts/app/entities/appointmentList/appointmentList-detail.controller.js"></script>
+	<script src="scripts/app/entities/appointmentList/AppointmentRatingController.js"></script>	
+	
+	<script src="scripts/app/entities/appointmentListForExpert/appointmentListForExpert.js"></script>
+    <script src="scripts/app/entities/appointmentListForExpert/appointmentListForExpert.controller.js"></script>
+    <script src="scripts/app/entities/appointmentListForExpert/appointmentListForExpert-dialog.controller.js"></script>
+    <script src="scripts/app/entities/appointmentListForExpert/appointmentListForExpert-detail.controller.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,23 @@
+.floatedRightElement {
+	float: right;
+	width: 101px;
+	font-size: 21px;
+	color: black;
+}
+
+.checkboxSize {
+	-webkit-transform: scale(2);
+}
+
+#addButton {
+	color: black;
+    width: 30px;
+    border-radius: 7px;
+	box-shadow: 0px 1px 4px rgb(128, 128, 128) inset;
+}
+
+#addFieldRadius {
+	border-radius: 7px;
+	box-shadow: 0px 1px 4px rgb(128, 128, 128) inset;
+	color: black;
+}

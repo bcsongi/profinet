@@ -1,0 +1,17 @@
+package edu.codespring.profinet.repository.search;
+
+
+import edu.codespring.profinet.domain.ExpertContactRequest;
+
+import java.util.List;
+
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+/**
+ * Spring Data ElasticSearch repository for the ExpertContactRequest entity.
+ */
+public interface ExpertContactRequestSearchRepository extends ElasticsearchRepository<ExpertContactRequest, Long> {
+	
+	List<ExpertContactRequest> findByUserRequest_idAndExpertrequest_id(Long userid, Long expertid);
+
+}

@@ -1,0 +1,24 @@
+{
+    "profinetApp": {
+        "appointment" : {
+            "home": {
+                "title": "Appointments",
+                "createLabel": "Créer un nouveau Appointment",
+                "createOrEditLabel": "Créer ou éditer un Appointment"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Appointment {{ id }} ?"
+            },
+            "detail": {
+                "title": "Appointment"
+            },
+            "startingDate": "StartingDate",
+            "endingDate": "EndingDate",
+            "description": "Description",
+            "status": "Status",
+            "expertappointment": "expertappointment",
+            "userappointment": "userappointment"
+        }
+    }
+}
+

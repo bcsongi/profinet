@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="profinetApp.userFeedback.detail.title">UserFeedback</span> {{userFeedback.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="profinetApp.userFeedback.comment">Comment</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{userFeedback.comment}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.userFeedback.rating">Rating</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{userFeedback.rating}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.userFeedback.date">Date</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{userFeedback.date}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="userFeedback"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="profinetApp.message.detail.title">Message</span> {{message.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="profinetApp.message.text">Text</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{message.text}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.message.date">Date</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{message.date}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.message.userfrom">userfrom</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{message.userfrom.login}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.message.userto">userto</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{message.userto.login}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="message"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

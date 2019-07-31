@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="profinetApp.expertContactRequest.detail.title">ExpertContactRequest</span> {{expertContactRequest.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertContactRequest.approved">Approved</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertContactRequest.approved}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertContactRequest.userRequest">userRequest</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertContactRequest.userRequest.login}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="profinetApp.expertContactRequest.expertrequest">expertrequest</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{expertContactRequest.expertrequest.id}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="expertContactRequest"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
